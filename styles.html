@@ -1,0 +1,353 @@
+<style>
+/* ---- General Theme ---- */
+.main .block-container {
+    padding-top: 1.5rem;
+    max-width: 1400px;
+}
+
+/* ---- Header ---- */
+.fpl-header {
+    background: linear-gradient(135deg, #37003c 0%, #6c3082 40%, #04f5ff 80%,#b8f000 100%);
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-align: center;
+}
+.fpl-header h1 {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+.fpl-header p {
+    margin: 0.3rem 0 0;
+    opacity: 0.85;
+    font-size: 0.95rem;
+}
+
+/* ---- Metric Cards ---- */
+.metric-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.metric-card {
+    flex: 1;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 10px;
+    padding: 1.2rem;
+    text-align: center;
+    border: 1px solid #2a2a4a;
+}
+.metric-card .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8892b0;
+    margin-bottom: 0.3rem;
+}
+.metric-card .value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #04f5ff;
+}
+.metric-card .value.green { color: #00ff87; }
+.metric-card .value.purple { color: #b366ff; }
+.metric-card .value.yellow { color: #ffe066; }
+
+/* ---- Player Card ---- */
+.player-card {
+    background: linear-gradient(145deg, #1a1a2e 0%, #0f0f23 100%);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid #2a2a4a;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.player-card:hover {
+    transform: translateY(-2px);
+    border-color: #04f5ff;
+}
+.player-card .rank {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #555;
+    min-width: 35px;
+    text-align: center;
+}
+.player-card .rank.top3 { color: #00ff87; }
+.player-card .photo-container {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #2a2a4a;
+    flex-shrink: 0;
+    background: #16213e;
+    position: relative;
+}
+.player-card .photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.player-card .info {
+    flex: 1;
+    min-width: 0;
+}
+.player-card .info .name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #e6e6e6;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.player-card .info .meta {
+    font-size: 0.78rem;
+    color: #8892b0;
+    margin-top: 2px;
+}
+.player-card .stats {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+.player-card .stat-item {
+    text-align: center;
+}
+.player-card .stat-item .stat-val {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #e6e6e6;
+}
+.player-card .stat-item .stat-label {
+    font-size: 0.65rem;
+    color: #8892b0;
+    text-transform: uppercase;
+}
+.player-card .predicted-pts {
+    text-align: center;
+    min-width: 65px;
+}
+.player-card .predicted-pts .pts-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #00ff87;
+}
+.player-card .predicted-pts .pts-label {
+    font-size: 0.65rem;
+    color: #8892b0;
+    text-transform: uppercase;
+}
+
+/* ---- Injury / Status Badge ---- */
+.status-badge {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.62rem;
+    font-weight: 700;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+.status-injured { background: #FF1751; color: #fff; }
+.status-doubtful { background: #f59e0b; color: #1a1a2e; }
+.status-suspended { background: #ef4444; color: #fff; }
+
+/* ---- FDR Badge ---- */
+.fdr-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.fdr-1 { background: #375523; color: #fff; }
+.fdr-2 { background: #01FC7A; color: #1a1a2e; }
+.fdr-3 { background: #E7E7E7; color: #1a1a2e; }
+.fdr-4 { background: #FF1751; color: #fff; }
+.fdr-5 { background: #861D46; color: #fff; }
+
+/* ---- Position Badge ---- */
+.pos-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+.pos-GK { background: #f59e0b; color: #1a1a2e; }
+.pos-DEF { background: #10b981; color: #1a1a2e; }
+.pos-MID { background: #3b82f6; color: #fff; }
+.pos-FWD { background: #ef4444; color: #fff; }
+
+/* ---- Section Headers ---- */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #2a2a4a;
+}
+.section-header h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #e6e6e6;
+}
+
+/* ---- Previous Season Table ---- */
+.prev-season-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+.prev-season-table th {
+    background: #16213e;
+    color: #8892b0;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #2a2a4a;
+}
+.prev-season-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #1e1e3a;
+    color: #c8c8d8;
+}
+.prev-season-table tr:hover td {
+    background: #1a1a3e;
+}
+
+/* ---- Top Pick Mini Card ---- */
+.top-pick-card {
+    background: linear-gradient(145deg, #1a1a2e 0%, #0f0f23 100%);
+    border-radius: 10px;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #2a2a4a;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.top-pick-card .tp-photo {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #2a2a4a;
+    flex-shrink: 0;
+    background: #16213e;
+}
+.top-pick-card .tp-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.top-pick-card .tp-info {
+    flex: 1;
+}
+.top-pick-card .tp-name {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #e6e6e6;
+}
+.top-pick-card .tp-meta {
+    font-size: 0.72rem;
+    color: #8892b0;
+}
+.top-pick-card .tp-pts {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #00ff87;
+}
+
+/* ---- Sidebar Improvements ---- */
+section[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #0f0f23 0%, #1a1a2e 100%);
+}
+section[data-testid="stSidebar"] .stMarkdown h1,
+section[data-testid="stSidebar"] .stMarkdown h2,
+section[data-testid="stSidebar"] .stMarkdown h3 {
+    color: #04f5ff;
+}
+
+/* ---- Fixture Difficulty Row ---- */
+.fdr-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+/* ---- Tabs ---- */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 10px;
+    justify-content: center;
+}
+.stTabs [data-baseweb="tab-list"] button[data-baseweb="tab"] {
+    flex: 1;
+    font-size: 1.1rem !important;
+    padding: 14px 15px !important;
+    height: 52px !important;
+    white-space: nowrap !important;
+    text-align: center;
+    border-radius: 10px !important;
+    margin: 0 !important;
+    background-color: transparent !important;
+    color: #8892b0 !important;
+    transition: all 0.3s ease !important;
+    border: 2px solid #2a2a4a !important;
+    font-weight: 600;
+}
+.stTabs [data-baseweb="tab-list"] button[data-baseweb="tab"]:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Tab 1 - Predictions: Purple */
+.stTabs [data-baseweb="tab-list"] button[data-baseweb="tab"]:nth-child(1)[aria-selected="true"] {
+    background-color: rgba(108, 48, 130, 0.85) !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: 0 0 12px rgba(108, 48, 130, 0.5);
+}
+.stTabs [data-baseweb="tab-list"] button[data-baseweb="tab"]:nth-child(1) {
+    border-color: #6c3082 !important;
+}
+
+/* Tab 2 - Player Search: Cyan */
+.stTabs [data-baseweb="tab-list"] button[data-baseweb="tab"]:nth-child(2)[aria-selected="true"] {
+    background-color: rgba(4, 245, 255, 0.75) !important;
+    color: #0f0f23 !important;
+    border: none !important;
+    box-shadow: 0 0 12px rgba(4, 245, 255, 0.5);
+}
+.stTabs [data-baseweb="tab-list"] button[data-baseweb="tab"]:nth-child(2) {
+    border-color: #04f5ff !important;
+}
+
+/* Tab 3 - Model Analysis: Green */
+.stTabs [data-baseweb="tab-list"] button[data-baseweb="tab"]:nth-child(3)[aria-selected="true"] {
+    background-color: rgb(142, 202, 78) !important;
+    color: #0f0f23 !important;
+    border: none !important;
+    box-shadow: 0 0 12px rgb(142, 202, 78);
+}
+.stTabs [data-baseweb="tab-list"] button[data-baseweb="tab"]:nth-child(3) {
+    border-color: #b8f000 !important;
+}
+</style>

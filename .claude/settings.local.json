@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nvidia-smi:*)",
+      "Bash(\"C:/Users/Skander Belloum/Desktop/main/.venv/Scripts/pip.exe\" uninstall torch torchaudio torchvision -y)",
+      "Bash(\"C:/Users/Skander Belloum/Desktop/main/.venv/Scripts/pip.exe\" install:*)",
+      "Bash(python:*)"
+    ]
+  }
+}
